@@ -17,7 +17,31 @@ void loop(){
   delay(15);
   Serial.println(itung);
   if(itung<15){
-    digitalWrite(buz,1);
+    digitalWrite(buz,HIGH);
     }
-delay(700);
+delay(1000);
+}
+
+const int trig=10;
+const int echo=11;
+int buz=5;
+void setup() {
+ pinMode(buz,OUTPUT);
+ Serial.begin(9600);}
+void loop(){
+  pinMode(trig,OUTPUT);
+  pinMode(echo,INPUT);
+  digitalWrite(trig,LOW);
+  delayMicroseconds(2);
+  digitalWrite(trig,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trig,LOW);
+  long duration=pulseIn(echo,HIGH);
+  long itung= duration*0.034/2;
+  delay(15);
+  Serial.println(itung);
+  if(itung<15){
+    digitalWrite(buz,HIGH);
+    }
+delay(1000);
 }
